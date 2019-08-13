@@ -3,8 +3,7 @@
     <div class="card-body text-primary">
       <h5 class="card-title">Listado de clientes</h5>
       <div class="my-2 text-left">
-        <!-- <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']">-->
-            <button class="btn btn-rounded btn-primary" type="button">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']">
           Crear Cliente
         </button>
       </div>
@@ -33,16 +32,10 @@
             <td>{{ cliente.email }}</td>
             <td>{{ cliente.createAt }}</td>
             <td>
-                <!--<button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary btn-sm">editar</button>
-                    -->
-                    <button type="button" name="editar" class="btn btn-primary btn-sm">editar</button>
-            
+                <button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary btn-sm">editar</button>
             </td>
             <td>
-                <!--
-                                  <button type="button" name="eliminar" (click)='delete(cliente)' class="btn btn-danger btn-sm">eliminar</button>
-                -->
-                <button type="button" name="eliminar" class="btn btn-danger btn-sm">eliminar</button>
+              <button type="button" name="eliminar" (click)='delete(cliente)' class="btn btn-danger btn-sm">eliminar</button>
             </td>
           </tr>
         </tbody>
