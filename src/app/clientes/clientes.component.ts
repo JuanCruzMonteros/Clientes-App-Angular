@@ -8,11 +8,15 @@ import { ClienteService } from './cliente.service';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService) {
+    
+  }
 
   private clientes: Cliente[];
   ngOnInit() {
-    this.clientes = this.clienteService.getClientes();
+    this.clienteService.getClientes().subscribe(
+      cliente => this.clientes = cliente
+    )
   }
 
 }
