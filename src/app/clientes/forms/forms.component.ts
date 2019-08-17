@@ -52,7 +52,7 @@ export class FormsComponent implements OnInit {
       .subscribe(
         json => {
           this.router.navigate(['/clientes']);
-          swal('Cliente Actualizado', `${json.mensaje}: ${json.cliente.nombre}`, 'success');
+          swal.fire('Cliente Actualizado', `${json.mensaje}: ${json.cliente.nombre}`, 'success');
         },
         err => {
           this.errores = err.error.errors as string[];
