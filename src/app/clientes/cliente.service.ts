@@ -8,6 +8,7 @@ import { catchError } from 'rxjs/Operators';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,9 @@ export class ClienteService {
         let clientes = response as Cliente[];
         return clientes.map(cliente => {
           cliente.nombre = cliente.nombre.toUpperCase();
-          //let datePipe = new DatePipe('es');
+
+          let datePipe = new DatePipe('es');
           //cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy');
-          //cliente.createAt = formatDate(cliente.createAt, 'dd-MM-yyyy', 'es');
           return cliente;
         });
       }
