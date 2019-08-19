@@ -10,12 +10,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
-import { registerLocaleData } from "@angular/common";
-import localeES from '@angular/common/locales/es';
+
 import { ClienteService } from './clientes/cliente.service';
 import { PaginatorComponent } from './paginator/paginator.component';
-
-registerLocaleData(localeES,'es');
+import { PerfilComponent } from './clientes/perfil/perfil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/clientes', pathMatch: 'full' },
@@ -23,7 +21,6 @@ const routes: Routes = [
   { path: 'clientes/page/:page', component: ClientesComponent },
   { path: 'clientes/form', component: FormsComponent },
   { path: 'clientes/form/:id', component: FormsComponent }
-
 ];
 
 
@@ -34,7 +31,8 @@ const routes: Routes = [
     FormsComponent,
     FooterComponent,
     HeaderComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +40,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ClienteService, {provide: LOCALE_ID,useValue: 'es'}],
+  providers: [ClienteService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CLIENTES } from './clientes.json';
 import { Cliente } from './cliente';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { catchError } from 'rxjs/Operators';
 import { throwError } from 'rxjs';
@@ -23,8 +23,8 @@ export class ClienteService {
   getClientes(page: number): Observable<any> {
     return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
       tap((response: any) => {
-        console.log('ClienteService: tap 1');
-        (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
+        //console.log('ClienteService: tap 1');
+        //(response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
       }),
       map((response: any) => {
         (response.content as Cliente[]).map(cliente => {
@@ -37,8 +37,8 @@ export class ClienteService {
         return response;
       }),
       tap(response => {
-        console.log('ClienteService: tap 2');
-        (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
+        //console.log('ClienteService: tap 2');
+        //(response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
       })
     );
   }
@@ -94,4 +94,20 @@ export class ClienteService {
       })
     );
   }
+
+
+  subirFoto(archivo: File, id): Observable<HttpEvent<{}>> {
+
+    let formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+
+    const req = new HttpRequest('POST', `${this.urlEndPoint}/upload`, formData, {
+      reportProgress: true
+    });
+
+    return this.http.request(req);
+
+  }
+
 }
