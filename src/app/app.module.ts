@@ -15,6 +15,7 @@ import { ClienteService } from './clientes/cliente.service';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { PerfilComponent } from './clientes/perfil/perfil.component';
 
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 const routes: Routes = [
   { path: '', redirectTo: '/clientes', pathMatch: 'full' },
   { path: 'clientes', component: ClientesComponent },
@@ -38,6 +39,8 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    MatDatepickerModule, 
+    MatNativeDateModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ClienteService ],
